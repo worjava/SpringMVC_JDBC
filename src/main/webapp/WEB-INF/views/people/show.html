@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>человек</title>
+</head>
+<body>
+<!-- выводит значение имени персоны, полученной из объекта person -->
+<p th:text="${person.getName()}">VALUE</p>
+<!-- выводит значение идентификатора персоны, полученного из объекта person -->
+<p th:text="${person.getId()}">VALUE</p>
+<p th:text="${person.getAge()}">VALUE</p>
+<p th:text="${person.getEmail()}">VALUE</p>
+
+
+<!-- создает ссылку на страницу редактирования персоны, используя идентификатор персоны -->
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+
+<!-- создает форму для отправки запроса на удаление персоны с указанным идентификатором -->
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
